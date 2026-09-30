@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terbiýeçi kömekçisi</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f5c63">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#eef4f4;--card:#fff;--ink:#1d2b2e;--mute:#5b6d70;--brand:#0f5c63;--line:#d3e0e1;--mark:#f2b632;--bad:#b3261e;--ok:#1e7a46}
+:root[data-theme=dark]{--bg:#121b1d;--card:#1a2629;--ink:#e6eeee;--mute:#9bb0b3;--brand:#66c2c9;--line:#2c3c40;--bad:#ff8a80;--ok:#6fd49b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+.wrap{max-width:720px;margin:0 auto;padding:12px 14px}
+.top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.top h1{flex:1;font-size:20px;margin:0;color:var(--brand)}
+button,input,select,textarea{font:inherit;color:var(--ink)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:16px;z-index:9}.ov .card{max-width:340px;text-align:center;margin:0}.ov img{width:100%;max-width:260px;image-rendering:pixelated;background:#fff}
+.sm{padding:7px 11px;border:1px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.card h2{font-size:17px;margin:0 0 8px;color:var(--brand)}
+.warn{border-left:5px solid var(--mark)}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .g{flex:1;min-width:0}
+input[type=checkbox]{width:22px;height:22px;accent-color:var(--brand);flex:none}
+input[type=text],input[type=time],select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+input[type=time]{width:auto}
+textarea{min-height:70px}
+.pill{min-width:74px;padding:8px 10px;border-radius:18px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:14px}
+.pill.p{background:var(--ok);color:#fff;border-color:var(--ok)}
+.pill.a{background:var(--bad);color:#fff;border-color:var(--bad)}
+.pill.h{background:var(--mark);color:#222;border-color:var(--mark)}
+.btn{padding:10px 14px;border:0;border-radius:8px;background:var(--brand);color:#fff;cursor:pointer;font-weight:600}
+.done{text-decoration:line-through;color:var(--mute)}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:6px}
+.tag.good{color:var(--ok)}.tag.hard{color:#a86a00}.tag.urgent{color:var(--bad);font-weight:700}
+.mute{color:var(--mute);font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:6px 4px;border-bottom:1px solid var(--line);text-align:center}
+th:first-child,td:first-child{text-align:left}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0)}
+nav button{flex:1;padding:13px 2px;border:0;background:none;font-size:13px;cursor:pointer;color:var(--mute)}
+nav button.on{color:var(--brand);font-weight:700;border-top:3px solid var(--brand);margin-top:-1px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+a{color:var(--brand)}
+@media print{nav,.top,.noprint{display:none!important}body{background:#fff;padding:0}.card{border:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><h1 id="ttl"></h1><button class="sm" onclick="qrShow()" aria-label="QR">QR</button><button class="sm" onclick="tl()" id="lb"></button><button class="sm" onclick="tt()">◐</button></div>
+<div class="mute" id="clk" style="margin:-2px 2px 10px"></div>
+<div id="v"></div>
+</div>
+<nav id="nv"></nav>
+<script>
+var D={tk:{app:'Terbiýeçi kömekçisi',today:'Şu gün',kids:'Çagalar',notes:'Bellikler',rep:'Hasabat',guide:'Gollanma',
+s1:'Smenany kabul etmek',s2:'Irden turmak, ýuwunmak',s3:'Nahar',s4:'Özbaşdak taýýarlyk',s5:'Gezelenç',s6:'Agşamky iş',s7:'Ýatmaga taýýarlyk',s8:'Smenany tabşyrmak',
+minute:'Üstünlük minuty',minTxt:'Bu çaga soňky günlerde az bellik aldy. Şu gün onuň bir gowy işini belläň: ',attn:'Üns beriň',abs3:' günden bäri ýok: ',unm:'Şu gün ýoklanmadyk çaga sany: ',tip:'Günüň maslahaty',
+add:'Goş',name:'Çaganyň ady',noKids:'Ilki çagalary goşuň.',here:'Bar',away:'Ýok',home:'Öýde',none:'—',
+good:'Üstünlik',hard:'Kynçylyk',urgent:'Adatdan daşary',ph:'Näme boldy?',all:'Umumy',save:'Ýatda sakla',toP:'Ata-enä',del:'Poz',
+urgHint:'Mekdebiň ýolbaşçylygyna derrew habar beriň.',week:'Soňky 7 gün',print:'Çap et',csv:'CSV',bk:'Ätiýaçlyk',rs:'Dikelt',
+priv:'Maglumat diňe şu telefonda saklanýar. Şahsy belgi we salgy ýazmaň.',sure:'Pozmalymy?',noNotes:'Entek bellik ýok.',tm:'Wagt',
+c_ch:'Çaga',c_p:'Bar',c_a:'Ýok',c_h:'Öýde',c_g:'Üst.',c_r:'Kyn.',rsOk:'Dikeldildi',rsBad:'Faýl ýalňyş',rsAsk:'Häzirki maglumat çalşyrylsynmy?',
+m_good:'Salam! {n} şu gün üstünlik gazandy: {x}. Sag boluň!',m_hard:'Salam! {n} barada aýtmaly zat bar: {x}. Bilelikde kömek edeliň.',m_urgent:'Salam! {n} barada möhüm habar: {x}. Mümkin bolsa, mekdebe jaň ediň.',
+tips:['Gürlände ýüzüňiz yşyga tarap bolsun, agzyňyzy ýapmaň.','Bir wagtda bir tabşyryk beriň.','Gygyrmaň. Egne ýuwaşja degip ünsi çekiň.','Ýalňyşanda gaharlanmaň, gaýtadan düşündiriň.','Şu gün çagalar bilen bir täze nyşany öwreniň.','Ata-enelere diňe kemçilik däl, üstünlik hem habar beriň.','Özüňize hem dynç aýyryň.']},
+ru:{app:'Помощник воспитателя',today:'Сегодня',kids:'Дети',notes:'Заметки',rep:'Отчёт',guide:'Руководство',
+s1:'Приём смены',s2:'Подъём, умывание',s3:'Питание',s4:'Самоподготовка',s5:'Прогулка',s6:'Вечерние дела',s7:'Подготовка ко сну',s8:'Передача смены',
+minute:'Минутка успеха',minTxt:'Этот ребёнок в последнее время получал мало отметок. Сегодня отметьте его хорошее дело: ',attn:'Обратите внимание',abs3:' дн. отсутствует: ',unm:'Сегодня не отмечено детей: ',tip:'Совет дня',
+add:'Добавить',name:'Имя ребёнка',noKids:'Сначала добавьте детей.',here:'Здесь',away:'Нет',home:'Дома',none:'—',
+good:'Успех',hard:'Трудность',urgent:'Происшествие',ph:'Что произошло?',all:'Общее',save:'Сохранить',toP:'Родителям',del:'Удалить',
+urgHint:'Сразу сообщите руководству школы.',week:'Последние 7 дней',print:'Печать',csv:'CSV',bk:'Резерв',rs:'Восстановить',
+priv:'Данные хранятся только на этом телефоне. Не записывайте личные номера и адреса.',sure:'Удалить?',noNotes:'Пока нет заметок.',tm:'Время',
+c_ch:'Ребёнок',c_p:'Здесь',c_a:'Нет',c_h:'Дома',c_g:'Усп.',c_r:'Труд.',rsOk:'Восстановлено',rsBad:'Неверный файл',rsAsk:'Заменить текущие данные?',
+m_good:'Здравствуйте! {n} сегодня проявил(а) себя: {x}. Спасибо!',m_hard:'Здравствуйте! Нужно поговорить о {n}: {x}. Давайте поможем вместе.',m_urgent:'Здравствуйте! Важное сообщение о {n}: {x}. Если можно, позвоните в школу.',
+tips:['Говоря, встаньте лицом к свету и не закрывайте рот.','Давайте одну инструкцию за раз.','Не кричите. Мягко коснитесь плеча, чтобы привлечь внимание.','Не сердитесь на ошибки, объясните заново.','Сегодня выучите с детьми один новый жест.','Сообщайте родителям не только о трудностях, но и об успехах.','Находите время и для себя.']}};
+function pad(n){return(n<10?'0':'')+n}
+function dk(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+var TD=dk(new Date()),TAB='today',S;
+function load(){try{var s=JSON.parse(localStorage.getItem('tkh')||'null');if(s&&s.kids)return s}catch(e){}return{lang:'tk',kids:[],att:{},notes:[],tm:{},dn:{}}}
+function save(){try{localStorage.setItem('tkh',JSON.stringify(S))}catch(e){}}
+S=load();
+function t(k){return D[S.lang][k]||k}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function days(n){var a=[],d=new Date();for(var i=0;i<n;i++){a.push(dk(d));d.setDate(d.getDate()-1)}return a}
+function kn(id){for(var i=0;i<S.kids.length;i++)if(S.kids[i].id===id)return S.kids[i].name;return t('all')}
+function good14(id){var ds=days(14),c=0;S.notes.forEach(function(n){if(n.k===id&&n.y==='good'&&ds.indexOf(n.d)>-1)c++});return c}
+function streak(id){var c=0,ds=days(30);for(var i=0;i<ds.length;i++){var s=(S.att[ds[i]]||{})[id];if(i===0&&!s)continue;if(s==='a')c++;else break}return c}
+function render(){
+ document.documentElement.lang=S.lang;
+ document.getElementById('ttl').textContent=t('app');
+ document.getElementById('lb').textContent=S.lang==='tk'?'RU':'TK';
+ var tabs=[['today','today'],['kids','kids'],['notes','notes'],['rep','rep']];
+ document.getElementById('nv').innerHTML=tabs.map(function(x){return '<button class="'+(TAB===x[0]?'on':'')+'" onclick="go(\''+x[0]+'\')">'+t(x[1])+'</button>'}).join('')+'<button onclick="location.href=\'gollanma.html\'">'+t('guide')+'</button>';
+ document.getElementById('v').innerHTML={today:vToday,kids:vKids,notes:vNotes,rep:vRep}[TAB]();
+}
+function go(x){TAB=x;render();window.scrollTo(0,0)}
+function tl(){S.lang=S.lang==='tk'?'ru':'tk';save();render();tick()}
+function tt(){var r=document.documentElement;if(r.getAttribute('data-theme')==='dark'){r.removeAttribute('data-theme');S.th=0}else{r.setAttribute('data-theme','dark');S.th=1}save()}
+if(S.th)document.documentElement.setAttribute('data-theme','dark');
+function vToday(){
+ var h='',dn=S.dn[TD]||{},smart='';
+ var al=[];S.kids.forEach(function(k){var s=streak(k.id);if(s>=3)al.push(esc(k.name)+' — '+s+t('abs3').replace(/: $/,''))});
+ var um=S.kids.filter(function(k){return!(S.att[TD]||{})[k.id]}).length;
+ if(al.length||(S.kids.length&&um))smart+='<div class="card warn"><h2>'+t('attn')+'</h2>'+al.map(function(a){return '<div>• '+a+'</div>'}).join('')+(S.kids.length&&um?'<div>• '+t('unm')+um+'</div>':'')+'</div>';
+ if(S.kids.length){var m=Math.min.apply(null,S.kids.map(function(k){return good14(k.id)}));var c=S.kids.filter(function(k){return good14(k.id)===m});var p=c[Math.floor(Date.now()/864e5)%c.length];
+  smart+='<div class="card"><h2>'+t('minute')+'</h2><div class="mute">'+t('minTxt')+'</div><b>'+esc(p.name)+'</b></div>'}
+ var tip=t('tips')[Math.floor(Date.now()/864e5)%7];
+ h+=smart+'<div class="card"><h2>'+t('today')+' · '+TD+'</h2>';
+ for(var i=1;i<=8;i++){h+='<div class="row"><input type="checkbox" '+(dn[i]?'checked':'')+' onchange="ck('+i+',this.checked)"><span class="g '+(dn[i]?'done':'')+'">'+t('s'+i)+'</span><input type="time" value="'+(S.tm[i]||'')+'" onchange="stm('+i+',this.value)" aria-label="'+t('tm')+'"></div>'}
+ return h+'</div><div class="card"><h2>'+t('tip')+'</h2>'+tip+'</div><p class="mute">'+t('priv')+'</p>'}
+function ck(i,v){S.dn[TD]=S.dn[TD]||{};S.dn[TD][i]=v?1:0;save();render()}
+function stm(i,v){S.tm[i]=v;save()}
+function vKids(){
+ var h='<div class="card"><div class="row"><input type="text" id="nk" placeholder="'+t('name')+'"><button class="btn" onclick="ak()">'+t('add')+'</button></div></div>';
+ if(!S.kids.length)return h+'<p class="mute">'+t('noKids')+'</p>';
+ h+='<div class="card">';
+ S.kids.forEach(function(k){var s=(S.att[TD]||{})[k.id]||'';var lb={p:t('here'),a:t('away'),h:t('home'),'':t('none')}[s];
+  h+='<div class="row"><span class="g">'+esc(k.name)+'</span><button class="pill '+s+'" onclick="ca(\''+k.id+'\')">'+lb+'</button><button class="sm" aria-label="'+t('del')+'" onclick="dk2(\''+k.id+'\')">✕</button></div>'});
+ return h+'</div>'}
+function ak(){var v=document.getElementById('nk').value.trim();if(!v)return;S.kids.push({id:'k'+Date.now(),name:v});save();render()}
+function ca(id){var o=['','p','a','h'],a=S.att[TD]=S.att[TD]||{},i=(o.indexOf(a[id]||'')+1)%4;if(o[i])a[id]=o[i];else delete a[id];save();render()}
+function dk2(id){if(!confirm(t('sure')))return;S.kids=S.kids.filter(function(k){return k.id!==id});save();render()}
+function vNotes(){
+ var o='<option value="">'+t('all')+'</option>'+S.kids.map(function(k){return '<option value="'+k.id+'">'+esc(k.name)+'</option>'}).join('');
+ var h='<div class="card"><select id="nc">'+o+'</select><div style="height:8px"></div><select id="ny"><option value="good">'+t('good')+'</option><option value="hard">'+t('hard')+'</option><option value="urgent">'+t('urgent')+'</option></select><div style="height:8px"></div><textarea id="nt" placeholder="'+t('ph')+'"></textarea><div style="height:8px"></div><button class="btn" onclick="an()">'+t('save')+'</button></div>';
+ if(!S.notes.length)return h+'<p class="mute">'+t('noNotes')+'</p>';
+ S.notes.map(function(n,i){return[n,i]}).reverse().forEach(function(p){var n=p[0],i=p[1];
+  h+='<div class="card"><span class="tag '+n.y+'">'+t(n.y)+'</span><span class="mute">'+n.d+' · '+esc(kn(n.k))+'</span><div>'+esc(n.x)+'</div>'+(n.y==='urgent'?'<div class="mute"><b>'+t('urgHint')+'</b></div>':'')+'<div style="margin-top:8px"><button class="sm" onclick="tp('+i+')">'+t('toP')+'</button> <button class="sm" onclick="dn2('+i+')">'+t('del')+'</button></div></div>'});
+ return h}
+function an(){var x=document.getElementById('nt').value.trim();if(!x)return;S.notes.push({d:TD,k:document.getElementById('nc').value,y:document.getElementById('ny').value,x:x});save();render()}
+function dn2(i){if(!confirm(t('sure')))return;S.notes.splice(i,1);save();render()}
+function tp(i){var n=S.notes[i];var m=t('m_'+n.y).replace('{n}',n.k?kn(n.k):'').replace('{x}',n.x);window.open('https://wa.me/?text='+encodeURIComponent(m),'_blank')}
+function rows(){var ds=days(7);return S.kids.map(function(k){var c={p:0,a:0,h:0,g:0,r:0};ds.forEach(function(d){var s=(S.att[d]||{})[k.id];if(s)c[s]++});S.notes.forEach(function(n){if(n.k===k.id&&ds.indexOf(n.d)>-1){if(n.y==='good')c.g++;else c.r++}});return[k.name,c.p,c.a,c.h,c.g,c.r]})}
+function vRep(){
+ var h='<div class="card"><h2>'+t('week')+' · '+days(7)[6]+' → '+TD+'</h2>';
+ if(!S.kids.length)return h+t('noKids')+'</div>';
+ h+='<table><tr><th>'+t('c_ch')+'</th><th>'+t('c_p')+'</th><th>'+t('c_a')+'</th><th>'+t('c_h')+'</th><th>'+t('c_g')+'</th><th>'+t('c_r')+'</th></tr>'+rows().map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+r.slice(1).join('</td><td>')+'</td></tr>'}).join('')+'</table></div>';
+ return h+'<div class="card noprint"><button class="btn" onclick="window.print()">'+t('print')+'</button> <button class="sm" onclick="csv()">'+t('csv')+'</button> <button class="sm" onclick="bk()">'+t('bk')+'</button> <label class="sm" style="display:inline-block">'+t('rs')+'<input type="file" accept=".json" hidden onchange="rs(this.files[0])"></label></div>'}
+function dl(name,txt,type){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:type}));a.download=name;document.body.appendChild(a);a.click();a.remove()}
+function csv(){var h=[t('c_ch'),t('c_p'),t('c_a'),t('c_h'),t('c_g'),t('c_r')];dl('hasabat-'+TD+'.csv','\ufeff'+[h].concat(rows()).map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n'),'text/csv')}
+function bk(){dl('terbiyeci-'+TD+'.json',JSON.stringify(S),'application/json')}
+function rs(f){if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(!o.kids)throw 0;if(!confirm(t('rsAsk')))return;S=o;save();render();alert(t('rsOk'))}catch(e){alert(t('rsBad'))}};r.readAsText(f)}
+var WD={tk:['Ýekşenbe','Duşenbe','Sişenbe','Çarşenbe','Penşenbe','Anna','Şenbe'],ru:['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота']};
+function tick(){var n=new Date();if(dk(n)!==TD){TD=dk(n);render()}
+ document.getElementById('clk').textContent=WD[S.lang][n.getDay()]+', '+pad(n.getDate())+'.'+pad(n.getMonth()+1)+'.'+n.getFullYear()+' · '+pad(n.getHours())+':'+pad(n.getMinutes())}
+function qrShow(){var o=document.createElement('div');o.className='ov';o.onclick=function(){o.remove()};
+ o.innerHTML='<div class="card"><h2>'+(S.lang==='tk'?'Paýlaş':'Поделиться')+'</h2><img src="qr.png" alt="QR"><p class="mute">'+(S.lang==='tk'?'Kody telefonyň kamerasy bilen skanirläň.':'Отсканируйте код камерой телефона.')+'</p></div>';document.body.appendChild(o)}
+tick();setInterval(tick,20000);
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+render();
+</script>
+</body>
+</html>
