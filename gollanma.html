@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tk" data-lang="tk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terbiýeçiniň gündelik amaly gollanmasy</title>
+<style>
+:root{--bg:#eef4f4;--card:#fff;--ink:#1d2b2e;--mute:#5b6d70;--brand:#0f5c63;--line:#d3e0e1;--mark:#f2b632}
+:root[data-theme="dark"]{--bg:#121b1d;--card:#1a2629;--ink:#e6eeee;--mute:#9bb0b3;--brand:#66c2c9;--line:#2c3c40}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:14px}
+.bar{display:flex;gap:8px;margin-bottom:14px}
+.bar button{flex:1;padding:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;font:inherit;font-size:14px;cursor:pointer}
+button:focus-visible,label:focus-within{outline:3px solid var(--mark);outline-offset:2px}
+h1{font-size:25px;line-height:1.25;margin:6px 4px 6px;color:var(--brand)}
+.sub{margin:0 4px 16px;color:var(--mute);font-size:15px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+h2{font-size:18px;margin:0 0 8px;color:var(--brand)}
+section>p{margin:0 0 8px}
+ul{margin:0;padding-left:20px}li{margin-bottom:8px}
+.check{list-style:none;padding:0}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check li{margin:0}.check li:last-child label{border-bottom:0}
+.check input{width:22px;height:22px;margin-top:2px;accent-color:var(--brand);flex:none}
+.check input:checked+span{text-decoration:line-through;color:var(--mute)}
+.reset{margin-top:10px;padding:9px 14px;border:1px solid var(--line);background:none;color:var(--ink);border-radius:8px;font:inherit;font-size:14px;cursor:pointer}
+.tips{border-left:5px solid var(--mark)}
+.ru{display:none}
+html[data-lang="ru"] .tk{display:none}
+html[data-lang="ru"] .ru{display:inline}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:14px 0 24px}
+@media print{.bar,.reset{display:none}body{background:#fff}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar">
+<button onclick="setLang()"><span class="tk">Русский</span><span class="ru">Türkmençe</span></button>
+<button onclick="setTheme()"><span class="tk">Gije / Gündiz</span><span class="ru">Ночь / День</span></button>
+</div>
+
+<h1><span class="tk">Terbiýeçiniň gündelik amaly gollanmasy</span><span class="ru">Практическое руководство воспитателя</span></h1>
+<p class="sub"><span class="tk">5-nji ýörite mekdep-internaty, Türkmenabat. Eşitmekde kemçiligi bolan çagalar bilen işlemek üçin.</span><span class="ru">Школа-интернат №5, Туркменабат. Для работы с детьми с нарушением слуха.</span></p>
+
+<section>
+<h2><span class="tk">Giriş</span><span class="ru">Введение</span></h2>
+<p><span class="tk">Internatda terbiýeçi çagalar bilen gije-gündiz bile bolýar. Onuň işi diňe okuw sagatlary bilen çäklenmeýär. Ol çagalaryň howpsuzlygyna, arassaçylygyna, endiklerine we özara gatnaşygyna jogap berýär. Bu gollanma gündelik işi tertipli we rahat geçirmäge kömek etmek üçin ýazyldy.</span><span class="ru">В интернате воспитатель находится с детьми круглосуточно. Его работа не ограничивается учебными часами: он отвечает за безопасность, чистоту, привычки и отношения детей. Это руководство помогает проводить ежедневную работу спокойно и по порядку.</span></p>
+</section>
+
+<section>
+<h2><span class="tk">1-nji bölüm. Smenany kabul etmek we gündelik tertip</span><span class="ru">Раздел 1. Приём смены и распорядок дня</span></h2>
+<ul>
+<li><span class="tk"><b>Smenany kabul etmek:</b> öňki terbiýeçiden çagalaryň sanyny, olaryň ýagdaýyny we ýörite tabşyryklary anyk alyň.</span><span class="ru"><b>Приём смены:</b> чётко получите от предыдущего воспитателя количество детей, их состояние и особые поручения.</span></li>
+<li><span class="tk"><b>Irden turmak we arassaçylyk:</b> çagalary wagtynda turuzyň, ýüz-ellerini ýuwdyryň, egin-eşikleriniň arassa we tertipli bolmagyna serediň.</span><span class="ru"><b>Подъём и гигиена:</b> вовремя поднимайте детей, следите за умыванием, чистотой и опрятностью одежды.</span></li>
+<li><span class="tk"><b>Naharda özüni alyp barmak:</b> naharhana gitmänkä çagalaryň ellerini ýuwmagyny üpjün ediň, stol başynda arassalyga we sypaýylyga endik ediň.</span><span class="ru"><b>Поведение за столом:</b> перед столовой проследите за мытьём рук, приучайте к аккуратности и вежливости за столом.</span></li>
+</ul>
+</section>
+
+<section>
+<h2><span class="tk">Smena barlagy</span><span class="ru">Чек-лист смены</span></h2>
+<ul class="check" id="cl">
+<li><label><input type="checkbox" data-k="1"><span><span class="tk">Çagalaryň sanyny barladym</span><span class="ru">Пересчитал детей</span></span></label></li>
+<li><label><input type="checkbox" data-k="2"><span><span class="tk">Öňki terbiýeçiden tabşyryklary aldym</span><span class="ru">Получил сведения от предыдущего воспитателя</span></span></label></li>
+<li><label><input type="checkbox" data-k="3"><span><span class="tk">Otaglaryň arassalygyny gördüm</span><span class="ru">Проверил чистоту комнат</span></span></label></li>
+<li><label><input type="checkbox" data-k="4"><span><span class="tk">Nahardan öň çagalar ellerini ýuwdy</span><span class="ru">Дети вымыли руки перед едой</span></span></label></li>
+<li><label><input type="checkbox" data-k="5"><span><span class="tk">Özbaşdak taýýarlyk geçirildi</span><span class="ru">Самоподготовка проведена</span></span></label></li>
+<li><label><input type="checkbox" data-k="6"><span><span class="tk">Gezelençde çagalary başda we ahyrynda sanadym</span><span class="ru">На прогулке пересчитал детей в начале и в конце</span></span></label></li>
+<li><label><input type="checkbox" data-k="7"><span><span class="tk">Ýatmazdan öň otaglaryň howasyny çalyşdym, yşyk we rozetkalary barladym</span><span class="ru">Перед сном проветрил комнаты, проверил свет и розетки</span></span></label></li>
+<li><label><input type="checkbox" data-k="8"><span><span class="tk">Smenany tabşyrdym</span><span class="ru">Передал смену</span></span></label></li>
+</ul>
+<button class="reset" onclick="resetCl()"><span class="tk">Täzeden başla</span><span class="ru">Сбросить</span></button>
+</section>
+
+<section>
+<h2><span class="tk">2-nji bölüm. Okuwdan soňky wagt we özbaşdak taýýarlyk</span><span class="ru">Раздел 2. Внеурочное время и самоподготовка</span></h2>
+<p><span class="tk">Eşitmekde kynçylygy bolan çagalar bilen işlemek aýratyn sabyrlylyk talap edýär.</span><span class="ru">Работа с детьми с нарушением слуха требует особого терпения.</span></p>
+<ul>
+<li><span class="tk"><b>Görkezmeli esbaplar:</b> öý tabşyrygyny düşündirende ýönekeý sözleri, suratlary, mimikany we ýazgylary ulanyň. Tabşyrygy ilki görkeziň, soň düşündiriň.</span><span class="ru"><b>Наглядность:</b> объясняя домашнее задание, используйте простые слова, картинки, мимику и записи. Сначала покажите задание, потом объясняйте.</span></li>
+<li><span class="tk"><b>Üstünlik ýagdaýyny döretmek:</b> çaga ýalňyşanda gaharlanmaň, gaýtadan düşündiriň, her kiçi üstünligi belläň. Bu çaganyň özüne ynamyny artdyrýar.</span><span class="ru"><b>Ситуация успеха:</b> не сердитесь на ошибки, объясняйте заново, отмечайте каждый маленький успех. Это укрепляет уверенность ребёнка.</span></li>
+<li><span class="tk"><b>Gezelenç we arassa howa:</b> internatyň howlusynda tertipli gezelenç ediň. Çagalaryň ýanyňyzdan aýrylyp gitmezligine berk serediň.</span><span class="ru"><b>Прогулки и свежий воздух:</b> организуйте прогулки по территории интерната. Строго следите, чтобы дети не отходили от вас.</span></li>
+</ul>
+</section>
+
+<section>
+<h2><span class="tk">3-nji bölüm. Agşam we howpsuzlyk</span><span class="ru">Раздел 3. Вечер и безопасность</span></h2>
+<ul>
+<li><span class="tk"><b>Howpsuzlyk:</b> otaglarda, ýatylýan ýerde we oýun meýdançasynda howpsuzlyk düzgünleriniň berjaý edilmegine serediň. Elektrik, penjire we basgançaklara üns beriň.</span><span class="ru"><b>Безопасность:</b> следите за соблюдением правил безопасности в комнатах, спальне и на площадке. Обращайте внимание на электричество, окна и лестницы.</span></li>
+<li><span class="tk"><b>Ýatmazdan öň:</b> otaglaryň howasyny çalyşyň, düşekleriň arassalygyny barlaň we dynç almak üçin rahat we asuda ýagdaý döretiň.</span><span class="ru"><b>Перед сном:</b> проветрите комнаты, проверьте чистоту постелей и создайте спокойную, уютную обстановку для отдыха.</span></li>
+<li><span class="tk"><b>Gijeki gözegçilik:</b> çagalary gözegçiliksiz goýmaň. Çaga özüni erbet duýsa ýa-da şikes alsa, ony ýeke goýman, mekdebiň ýolbaşçylygyna derrew habar beriň.</span><span class="ru"><b>Ночной присмотр:</b> не оставляйте детей без присмотра. Если ребёнок плохо себя чувствует или получил травму, не оставляйте его одного и сразу сообщите руководству школы.</span></li>
+</ul>
+</section>
+
+<section>
+<h2><span class="tk">4-nji bölüm. Amaly usullar</span><span class="ru">Раздел 4. Практические приёмы</span></h2>
+<ul>
+<li><span class="tk"><b>Suratly kartoçkalar:</b> nahar, uky, oýun ýaly suratly kartoçkalar çaganyň isleýşini aňsat düşündirmegine kömek edýär. Olary stolda ýa-da diwarda saklaň.</span><span class="ru"><b>Карточки с картинками:</b> карточки (еда, сон, игра и т. д.) помогают ребёнку легко объяснить, чего он хочет. Держите их на столе или на стене.</span></li>
+<li><span class="tk"><b>«Üstünlük minuty»:</b> her agşam 2–3 minut bilen günüň iň gowy işini görkezen çagany belläň. Bu ynamy berkidýär.</span><span class="ru"><b>«Минутка успеха»:</b> каждый вечер за 2–3 минуты отмечайте ребёнка, который лучше всех проявил себя за день. Это укрепляет уверенность.</span></li>
+<li><span class="tk"><b>Sessiz signallar:</b> üns çekmek üçin gygyrmaň. Çaganyň egnine ýuwaşja degiň, el ýallaň ýa-da yşygy ýakyp-öçüriň.</span><span class="ru"><b>Беззвучные сигналы:</b> чтобы привлечь внимание, не кричите. Мягко коснитесь плеча, помашите рукой или моргните светом.</span></li>
+<li><span class="tk"><b>Barmak elipbiýi (daktilologiýa):</b> çagalara barmak elipbiýini öwrenmäge kömek ediň we özüňiz hem ulanyň.</span><span class="ru"><b>Дактильный алфавит:</b> помогайте детям его учить и сами им пользуйтесь.</span></li>
+</ul>
+</section>
+
+<section class="tips">
+<h2><span class="tk">Goşmaça maslahatlar</span><span class="ru">Дополнительные советы</span></h2>
+<ul>
+<li><span class="tk">Çaga bilen gürleşende ýüzüňiz yşyga tarap bolsun, el ýa-da kitap bilen agzyňyzy ýapmaň. Çaga agzyňyzyň hereketini görmeli.</span><span class="ru">Говоря с ребёнком, встаньте лицом к свету, не закрывайте рот рукой или книгой. Ребёнок должен видеть движения губ.</span></li>
+<li><span class="tk">Arkaňyzy öwrüp ýa-da tagta tarap durup gürlemäň. Çaga sizi görmese düşünmeýär.</span><span class="ru">Не говорите, отвернувшись или стоя лицом к доске. Если ребёнок вас не видит, он не поймёт.</span></li>
+<li><span class="tk">Bir wagtyň özünde bir zat aýdyň. Uzyn tabşyrygy ownuk bölege bölüň.</span><span class="ru">Давайте одну инструкцию за раз. Длинное задание разбивайте на маленькие части.</span></li>
+<li><span class="tk">Dawa-jenjel bolanda ikisine hem ýuwaşlyk bilen gelip, suratlar ýa-da ýazgy arkaly sebäbini soraň. Gaharyňyz bilen jeza bermäň.</span><span class="ru">При ссоре подойдите к обоим спокойно и выясните причину через картинки или запись. Не наказывайте в гневе.</span></li>
+<li><span class="tk">Gündelik bir täze nyşany (ýa-da harpy) çagalar bilen bilelikde öwrenseňiz, aragatnaşyk ýyl ahyryna çenli ep-esli gowulanar.</span><span class="ru">Если ежедневно вместе с детьми учить один новый жест (или букву), к концу года общение заметно улучшится.</span></li>
+<li><span class="tk">Çaga köp gürlemese ýa-da ýüzi üýtgese, sebäbini soraň. Bu ýagdaýy geçirmäň.</span><span class="ru">Если ребёнок стал молчаливым или изменился в лице, спросите о причине. Не пропускайте это.</span></li>
+<li><span class="tk">Özüňize hem wagt aýyryň: ýadanyňyzda dynç alyň. Ýadaw terbiýeçi çagalara sabyr edip bilmeýär.</span><span class="ru">Находите время и для себя: отдыхайте, когда устали. Уставшему воспитателю трудно быть терпеливым.</span></li>
+</ul>
+</section>
+
+<section>
+<h2><span class="tk">5-nji bölüm. Maşgala we ata-eneler bilen</span><span class="ru">Раздел 5. Связь с семьёй и родителями</span></h2>
+<ul>
+<li><span class="tk"><b>Yzygiderli habarlaşmak:</b> çaganyň depderi ýa-da gysga habar arkaly ata-eneler bilen aragatnaşykda boluň.</span><span class="ru"><b>Регулярная связь:</b> общайтесь с родителями через тетрадь ребёнка или короткие сообщения.</span></li>
+<li><span class="tk"><b>Hepdelik netijeler:</b> diňe kemçilikleri däl, çaganyň üstünliklerini hem ata-enelere habar beriň. Şeýdip terbiýede birlik saklanýar.</span><span class="ru"><b>Итоги недели:</b> сообщайте родителям не только о трудностях, но и об успехах ребёнка. Так сохраняется единый подход к воспитанию.</span></li>
+</ul>
+</section>
+
+<footer><span class="tk">5-nji ýörite mekdep-internaty, Türkmenabat · 2026</span><span class="ru">Школа-интернат №5, Туркменабат · 2026</span></footer>
+</div>
+
+<script>
+var K='tk_guide_';
+function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function applyLang(l){document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l}
+function setLang(){var l=document.documentElement.getAttribute('data-lang')==='tk'?'ru':'tk';applyLang(l);put(K+'lang',l)}
+function setTheme(){var r=document.documentElement,d=r.getAttribute('data-theme')==='dark';d?r.removeAttribute('data-theme'):r.setAttribute('data-theme','dark');put(K+'theme',d?'light':'dark')}
+function resetCl(){document.querySelectorAll('#cl input').forEach(function(i){i.checked=false;put(K+'c'+i.dataset.k,'0')})}
+if(get(K+'lang')==='ru')applyLang('ru');
+if(get(K+'theme')==='dark')document.documentElement.setAttribute('data-theme','dark');
+document.querySelectorAll('#cl input').forEach(function(i){
+i.checked=get(K+'c'+i.dataset.k)==='1';
+i.addEventListener('change',function(){put(K+'c'+i.dataset.k,i.checked?'1':'0')});
+});
+</script>
+</body>
+</html>
