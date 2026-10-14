@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hukuk we borçlar</title>
+<meta name="theme-color" content="#0f5c63">
+<link rel="icon" href="icon-192.png">
+<style>
+:root{--bg:#eef4f4;--card:#fff;--ink:#1d2b2e;--mute:#5b6d70;--brand:#0f5c63;--line:#d3e0e1;--mark:#f2b632}
+:root[data-theme=dark]{--bg:#121b1d;--card:#1a2629;--ink:#e6eeee;--mute:#9bb0b3;--brand:#66c2c9;--line:#2c3c40}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:40px}
+.wrap{max-width:720px;margin:0 auto;padding:12px 14px}
+.top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.top h1{flex:1;font-size:20px;margin:0;color:var(--brand)}
+button{font:inherit;color:var(--ink)}
+.sm{padding:7px 11px;border:1px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;font-size:14px;text-decoration:none;color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.card h2{font-size:17px;margin:0 0 6px;color:var(--brand)}
+.mute{color:var(--mute);font-size:14px}
+.warn{border-left:5px solid var(--mark)}
+details{border-top:1px solid var(--line);padding:8px 0}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:600;padding:4px 0}
+ul{margin:6px 0 4px;padding-left:20px}
+li{margin-bottom:6px}
+a{color:var(--brand);word-break:break-word}
+summary:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+@media print{.top,.noprint{display:none!important}body{background:#fff}.card{border:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a class="sm" href="index.html" id="bk">←</a><h1 id="ttl"></h1><button class="sm" id="lb" onclick="tl()"></button></div>
+<div id="v"></div>
+</div>
+<script>
+var L='tk';
+try{var s0=JSON.parse(localStorage.getItem('tkh')||'null');if(s0){L=s0.lang==='ru'?'ru':'tk';if(s0.th)document.documentElement.setAttribute('data-theme','dark')}}catch(e){}
+var T={
+tk:{title:'Hukuk we borçlar',back:'Yza',
+secs:[
+{h:'Terbiýeçiniň wezipe borçlary',note:'Mekdep-internatyň 2024-nji ýyldaky wezipe görkezmesiniň gysgaça mazmuny. Täzelenen bolsa, müdirden soraň.',g:[
+{h:'Umumy',i:['Öz işini Zähmet kodeksine we «Bilim hakynda» Kanunda görkezilen hukuklara we borçlara laýyklykda guraýar.','Mekdep-internatyň içki düzgünini we iş tertibini berjaý etmeli.','Iş tertibi boýunça düzilen meýilnama rejä gabat gelmeli we berk ýerine ýetirilmeli.','Çagalaryň gün tertibini doly berjaý etmeli.','Düzülen meýilnama esasynda çagalaryň sözleýşini ösdürmekde we baýlaşdyrmakda mugallymyň işini dowam etdirmeli.']},
+{h:'Ker, çala eşidýän we soň ker bolan çagalar üçin',i:['Terbiýeçiler çagalaryň dil üsti bilen sözleýşini ösdürmek boýunça mugallymyň işini dowam etdirýär; çagalaryň söz üsti bilen özara gatnaşyklaryny ýola goýmaga, işjeňligini artdyrmaga ýardam berýär (oýunlarda, synpdan daşary okuwda, gezelençlerde).','Mugallym bilen bir hatarda okuw maksatnamasynda berlen sözleýiş endiklerini gazanmaga çalşýar, çagalaryň sözleýşini ünsden düşürmeýär.','Synpdan daşary çärelerde eşidiş ösdüriş derslerinde işlenilen nusgalary peýdalanyp, çagalaryň galyndy eşidiş ukybyny mümkin bolan derejede ulanýar we ösdürýär.','Her bir çaganyň ruhy we beden ösüşiniň aýratynlyklaryny göz öňünde tutup, olaryň saglygyna we ýaşaýşyna jogap berýär.']},
+{h:'Çagalaryň saglygy we howpsuzlygy',i:['Çagalary kabul edende bedenini, gyzgynyny, bokurdagyny, kellesini, saçyny, dyrnagyny barlap, saglyk gatnaşyk depderine bellemeli.','Her çaganyň şahsy depderçesi ýöredilip, lukman gözegçiliginden reje boýunça yzygider geçmeli.','Näsaglyk ýüze çykanda badyna mekdep lukmanyna ýüz tutmaly.','El-ýeter ýerinde dürtülýän, kesýän gaýçy, pyçak, almaz-lezwi ýaly zatlary goýmaly däl.','Oýunlar, gezelençler we ş.m. çäreleriň wagtynda betbagtçylyga, döwük-ýenjiklige uçramazlyga gönüden-göni jogapkär.','Saglygy berkitmek üçin irki maşklary, sport we hereketli oýunlary yzygider geçirmeli.','Saglygy goraýyş ministrliginiň 555-nji we 368-nji belgili buýruklaryny berjaý etmeli (1/11-99ý). Aktualylygyny lukmandan ýa-da müdirden soraň.']},
+{h:'Arassaçylyk',i:['Terbiýeçi: arassa iş geýimli (halatly), ellerinin dyrnaklary alnan we boýagsyz, aýagynda ýeňil köwüşli bolmaly; şahsy-aýry el sülgisi bolmaly; ellerini hojalyk sabyny bilen ýuwmaly.','Çagalaryň egin-eşiginiň, saçynyň we bedeniniň arassaçylygyna seretmeli.','Pedikulýoz barlygyny her gün barlamaly; ýüze çykan ýagdaýynda gyssagly arassaçylyk işlerini geçirmeli.','Her gün çagalar bilen arassaçylyk sagadyny guramaly.','Ýatylýan bölümde şahsy zatlaryň saklanyşyna, naharhanada tertip düzgünlerine, hammamda ýuwunmaga gözegçilik etmeli.','Çagalara öz-özüne hyzmat etmegi, özüni tertipli alyp barmagy öwretmeli; oýnawaçlary arassalamaly we ýokançsyzlandyrmaly.']},
+{h:'Emläk we ata-eneler',i:['Synpdaky, ýatakhanadaky, naharhanadaky, oýunlar otagyndaky espaplaryň, enjamlaryň we çagalaryň egin-eşikleriniň arassa we aýawly saklanmagyna jogapkär.','Ata-enelerden, raýatlardan hemaýat hökmünde berilýän iýmit önümlerini çagalara rugsatsyz iýdirmeli däl.']},
+{h:'Hünär borçlary we etika',i:['Hünär bilimlerini we pedagogik ussatlygy hemişe kämilleşdirmeli.','Okuwçylaryň, terbiýelenýänleriň, ata-enelerinň we kärdeşleriň abraýyna we mertebesine sarpa goýmaly.','Okuwy ýokary hünär derejesinde alyp barmaly; okaýanlaryň okuw maksatnamasyny döwlet talaplarynyň derejesinde özleşdirmegini üpjün etmeli.','Okaýanlaryň şahsy we döredijilik ukyplaryny ýüze çykarmak we ösdürmek üçin şertleri döretmeli.','Pedagogika etikasynyň talaplaryny berjaý etmeli.']},
+{h:'Zähmet şertleri',i:['Pedagogik işgärlere Zähmet kanunçylygyna laýyklykda her ýyl 45 senenama günlük esasy tölegli rugsat berilýär; adatça tomusky dynç alyş döwründe.','Iş haky zähmet şertnamasynda göz öňünde tutulan wezipe borçlarynyň ýerine ýetirilendigi üçin tölenilýär.','Mekdep-internatyň köpçülikleýin jemgyýetçilik işlerine işjeň gatnaşýar.']}
+]},
+{h:'«Bilim hakynda» Kanun, 31-nji madda',note:'Okaýanlary terbiýelemegiň esasy düzgünleri (VI bap). Gysgaça mazmuny; doly tekst aşakdaky salgyda.',g:[
+{h:'Baş maksat',i:['Ösüp gelýän ýaş nesilde durmuş ähmiýetli iň möhüm raýatlyk häsiýetlerini we olary adamyň, jemgyýetiň we döwletiň bähbitlerine döredijilikli işde ýüze çykarmak ukyplaryny kemala getirmek we ösdürmek.']},
+{h:'Terbiýäniň alty ugry',i:['Ruhy-ahlak terbiýesi','Raýat-watançylyk terbiýesi','Harby-watançylyk terbiýesi','Durmuş terbiýesi','Medeni-taryhy terbiýe','Sagdyn durmuş ýörelgesiniň terbiýesi']},
+{h:'Ruhy-ahlak terbiýesi',i:['Şahsyýetiň hakyky durmuşdaky ýokary gymmatlyklara, beýik maksatlara we wakalara göz ýetirmegi.','Ahlak aňynyň kemala getirilmegi, ahlak duýgularynyň ösdürilmegi, ahlak endikleriniň emele gelmegi.','Türkmen halkynyň däp-dessurlaryna mahsus bolmadyk, emeli şekilleri çekdirmek we beýleki kosmetiki amallar arkaly betgelşik hala getirilmedik bedeniň gözelligini terbiýelemek.','Şahsyýetiň saglygyna, ahlak we ruh ösüşine zyýan ýetirip biljek dini we beýleki guramalaryň täsirinden goramak.']},
+{h:'Raýat-watançylyk terbiýesi',i:['Gulluk, zähmet we jemgyýetçilik borçlaryny ýerine ýetirmegiň akyl ýetirilen zerurlygy, dogduk mekana söýgi.','Hukuk medeniýeti, döwlet häkimiýetine we döwlet nyşanlaryna hormat, ýokary ahlaklylyk, şahsy mertebe duýgusy.','Milli duýgular we milletara gatnaşyklaryň medeniýeti, işjeň raýatlyk orny, ata-babalarymyzyň şöhratly işlerine buýsanç.']},
+{h:'Harby-watançylyk terbiýesi',i:['Watany goramak boýunça konstitusion borçlary akyl ýetirip berjaý etmek.','Ýaragly Güýçlerde gulluk etmegiň abraýyny ýokarlandyrmak, harby gulluga taýýarlamak.','Ýaragly Güýçlere buýsanç, harby gulluga we harby lybasa hormat.','Ata-babalaryň harby däplerini saklamak, Watan goranlarynda wepat bolan esgerleriň ýadygärligini ebedileşdirmek.']},
+{h:'Durmuş terbiýesi',i:['Halkymyzyň durmuş jebisligini pugtalandyrmak.','Nesilleriň umumy kabul edilen ahlak kadalaryna hormaty dowam etdirmegi.','Maşgalany pugtalandyrmak, çagalar, ýaşuly adamlar we aýratyn alada talap edýän raýatlar barada alada etmek islegini ösdürmek.','Meýletinçiligi we haýyr-sahawaty ösdürmek.']},
+{h:'Medeni-taryhy terbiýe',i:['Häzirki we geljekki ösüş üçin taryhy, medeni däpleriň nesilden-nesle geçip saklanmagy we hormatlanylmagy.','Okaýanlarda milli-medeni aňy ösdürmek.']},
+{h:'Sagdyn durmuş ýörelgesiniň terbiýesi',i:['Bedenterbiýäniň we sagdyn durmuş ýörelgesiniň wagyz edilmegi.','Köpçülikleýin sportuň we sagdyn durmuş ýörelgesiniň ösdürilmegi.']},
+{h:'Beýleki düzgünler (9–12)',i:['Terbiýe boýunça döwlet syýasaty bilim ulgamynyň aýrylmaz bölegi bolan terbiýe ulgamy arkaly amala aşyrylýar; bu ulgam ähli işleri bir ýere jemleýär we utgaşdyrýar.','Esas: Ministrler Kabineti tarapyndan tassyklanýan çagalary we ýaşlary terbiýelemegiň döwlet maksatnamalary.','Maliýe üpjünçiligi Türkmenistanyň kanunçylygyna laýyklykda amala aşyrylýar.','Hukuk esasy: Konstitusiýa, şu Kanun, «Ýaşlar barada döwlet syýasaty», «Bedenterbiýe we sport», «Raýatlaryň saglygynyň goralmagy», «Medeniýet», «Harby borçlulyk we harby gulluk» hakyndaky Kanunlar, Maşgala kodeksi we beýleki kanunçylyk namalary.']}
+]},
+{h:'Konsepsiýalar we düzgünnamalar',note:'Bilim ulgamynda hereket edýän esasy resminamalar (barlag: 14.10.2026). Gysgaça maglumat.',g:[
+{h:'Döwlet umumybilim edaralary hakynda Düzgünnama',i:['Türkmenistanyň Prezidentiniň 2019-njy ýylyň 1-nji martyndaky 1158-nji karary bilen tassyklanan; orta mekdepleriň ähli görnüşleriniň işini düzgünleşdirýär.','Umumy orta bilim hökmanydyr, her bir adam ony döwlet bilim edaralarynda mugt almaga haklydyr.','Orta mekdeplerde tertip-düzgün mugallymlaryň we okuwçylaryň adam mertebesine özara sarpa goýmaklary esasynda saklanýar. Okuwçylara fiziki güýç we psihiki zorluk usullaryny ulanmaga ýol berilmeýär.','Okuwçylar döwlet bilim edaralarynda okuw kitaplaryny we okuw gollanmalaryny mugt ulanmaga haklydyr.']},
+{h:'Hereket edýän konsepsiýalar we maksatnama',i:['Türkmenistanda on iki ýyllyk umumy orta bilime geçmegiň Konsepsiýasy.','Türkmenistanda sanly bilim ulgamyny ösdürmegiň Konsepsiýasy.','Türkmenistanda daşary ýurt dillerini okatmagy kämilleşdirmegiň Konsepsiýasy.','Türkmenistanda tebigy we takyk ylmy ugurlara degişli dersleri okatmagy kämilleşdirmegiň Konsepsiýasy.','Türkmenistanda umumybilim maksatnamalary boýunça okatmagyň usulyýetini kämilleşdirmegiň 2028-nji ýyla çenli Konsepsiýasy.','«Berkarar döwletiň täze eýýamynyň Galkynyşy: Türkmenistany 2022–2052-nji ýyllarda durmuş-ykdysady taýdan ösdürmegiň Milli maksatnamasy».']},
+{h:'Bellik',i:['Konsepsiýalar we Milli maksatnama Bilim ministrliginiň 2026–2027-nji okuw ýylynyň awgust maslahatlary üçin usuly görkezmelerinde esas hökmünde görkezilýär.','2019-njy ýyldaky Düzgünnama Bilim ministrliginiň resmi portalynda ýerleşdirilen; çalşylandygy barada maglumat tapylmady.']}
+]},
+{h:'Aktualylyk (barlag: 14.10.2026)',warn:1,g:[
+{h:'Netije',i:['«Bilim hakynda» Kanun: 2013-nji ýylyň 4-nji maýynda kabul edilen; rejelenen görnüşi 2021-nji ýylyň 5-nji iýunynda kabul edilen (12 bap, 60 madda).','2023-nji ýylyň iýunynda diňe 24-nji we 35-nji maddalara üýtgetme girizildi. 31-nji madda üýtgedilmedi.','Bilim ministrliginiň 2025–2026-njy okuw ýylynyň usuly görkezmeleri Kanunyň rejelenen görnüşine salgylanýar; 2026–2027-nji okuw ýylynyň görkezmeleri hem «Bilim hakynda» Kanuna salgylanýar.','Bu Kanuny çalyşýan täze kanun tapylmady.','Düzgünnamany (2019) we aşakdaky konsepsiýalary çalyşýan täze resminama barada maglumat tapylmady.']}
+],links:[['Düzgünnama (Bilim ministrliginiň portaly)','https://nic.bilim.tm/documents/international-argeements/18'],['Usuly görkezmeler 2026–2027','https://bilim.gov.tm/metbugat/231/bilim-isgarlerinin-20262027-nji-okuw-yylynyn-awgust-maslahatlaryny-we-usuly-amaly-okuwlaryny-gecirmek-boyunca-usuly-maslahatlar/'],['Kanunyň doly teksti','https://turkmenistan.gov.tm/tk/habar/55028/turkmenistanyn-kanuny-bilim-hakynda-rejelenen-gornusi'],['2023-nji ýyldaky üýtgetmeler','https://turkmenistan.gov.tm/tk/habar/73192/turkmenistanyn-kanuny-bilim-hakynda-turkmenistanyn-kanunyna-uytgetmeler-girizmek-hakynda']],foot:'Bu gysgaça maglumat, hukuk maslahaty däl. Möhüm ýagdaýda resmi teksti we müdiri ulanyň.'}
+]},
+ru:{title:'Права и обязанности',back:'Назад',
+secs:[
+{h:'Обязанности воспитателя',note:'Краткое содержание должностной инструкции школы-интерната (2024). Если она обновлялась, уточните у директора.',g:[
+{h:'Общее',i:['Организует работу в соответствии с Трудовым кодексом и правами и обязанностями, указанными в Законе «Об образовании».','Соблюдать внутренний распорядок и режим работы школы-интерната.','План, составленный по режиму работы, должен соответствовать расписанию и строго выполняться.','Полностью соблюдать распорядок дня детей.','По составленному плану продолжать работу учителя по развитию и обогащению речи детей.']},
+{h:'Для школы-интерната глухих, слабослышащих и позднооглохших детей',i:['Воспитатели продолжают работу учителя по развитию устной речи детей, помогают налаживать речевое общение и повышать активность детей (в играх, на внеклассных занятиях, на экскурсиях).','Вместе с учителем добиваются речевых навыков, предусмотренных учебной программой, не оставляют речь детей без внимания.','На внеурочных мероприятиях используют образцы речи, отработанные на занятиях по развитию слуха, и по возможности развивают остаточный слух детей.','Учитывают особенности психического и физического развития каждого ребёнка и отвечают за его здоровье и жизнь.']},
+{h:'Здоровье и безопасность детей',i:['При приёме осматривать тело, температуру, горло, голову, волосы, ногти ребёнка и отмечать в санитарном журнале.','Вести личную карточку здоровья ребёнка и регулярно проводить медосмотры по плану.','При признаках болезни сразу обращаться к школьному врачу.','Не оставлять в доступном месте колющие и режущие предметы: ножницы, ножи, лезвия.','Отвечать за то, чтобы на играх, экскурсиях и других мероприятиях дети не получили травм, переломов, ушибов.','Для укрепления здоровья регулярно проводить утреннюю зарядку, спорт и подвижные игры.','Выполнять приказы Минздрава №555 и №368 (1/11-99). Актуальность уточните у врача или директора.']},
+{h:'Гигиена',i:['Воспитатель: чистая рабочая одежда (халат), ногти острижены и без лака, лёгкая сменная обувь, личное полотенце, руки обрабатывать хозяйственным мылом.','Следить за чистотой одежды, волос и тела детей.','Ежедневно проверять детей на педикулёз; при обнаружении срочно проводить санитарные меры.','Ежедневно проводить с детьми час гигиены.','Следить за хранением личных вещей в спальне, порядком в столовой, купанием детей.','Учить детей самообслуживанию и организованному поведению; чистить и дезинфицировать игрушки.']},
+{h:'Имущество и родители',i:['Отвечать за сохранность мебели и оборудования в классе, спальне, столовой, игровой комнате, а также за чистоту и сохранность одежды и обуви детей.','Не разрешать детям есть продукты, которые родители или посторонние приносят в виде передач, без разрешения.']},
+{h:'Профессиональные обязанности и этика',i:['Постоянно повышать профессиональные знания и педагогическое мастерство.','Уважать честь и достоинство учеников, воспитанников, их родителей и коллег.','Вести работу на высоком профессиональном уровне и обеспечивать усвоение программы в соответствии с государственными требованиями.','Создавать условия для выявления и развития личных и творческих способностей детей.','Соблюдать требования педагогической этики.']},
+{h:'Условия труда',i:['Педагогическим работникам по трудовому законодательству положен ежегодный основной оплачиваемый отпуск 45 календарных дней, обычно летом.','Оплата труда производится за выполнение должностных обязанностей, предусмотренных трудовым договором.','Активно участвует в общественной жизни коллектива школы-интерната.']}
+]},
+{h:'Закон «Об образовании», статья 31',note:'Основные принципы воспитания обучающихся (глава VI). Краткое изложение, полный текст по ссылке ниже.',g:[
+{h:'Главная цель',i:['Формирование и развитие у подрастающего поколения важнейших гражданских качеств и способности проявлять их в творческой работе на благо человека, общества и государства.']},
+{h:'Шесть направлений воспитания',i:['Духовно-нравственное','Гражданско-патриотическое','Военно-патриотическое','Социальное','Культурно-историческое','Воспитание принципов здорового образа жизни']},
+{h:'Духовно-нравственное воспитание',i:['Понимание высоких ценностей, великих целей и событий реальной жизни.','Формирование нравственного сознания, нравственных чувств и привычек нравственного поведения.','Воспитание красоты тела, не искажённого татуировками и иными косметическими процедурами, чуждыми традициям туркменского народа.','Защита от влияния деятельности религиозных и иных организаций, способной навредить здоровью, нравственному и духовному развитию личности.']},
+{h:'Гражданско-патриотическое воспитание',i:['Осознанная необходимость службы, труда и исполнения общественного долга, любовь к родной земле.','Правовая культура, уважение к государственной власти и государственным символам, высокая нравственность, чувство личного достоинства.','Национальные чувства и культура межнациональных отношений, активная гражданская позиция, гордость за славные дела предков.']},
+{h:'Военно-патриотическое воспитание',i:['Осознанное исполнение конституционного долга по защите Родины.','Повышение престижа службы в Вооружённых силах, подготовка к военной службе.','Гордость за Вооружённые силы, уважение к военной службе и военной форме.','Сохранение военных традиций предков, увековечение памяти погибших защитников Родины.']},
+{h:'Социальное воспитание',i:['Укрепление социального единства народа.','Уважение к общепринятым нормам морали и преемственность поколений.','Укрепление семьи, забота о детях, пожилых и других людях, нуждающихся в особом внимании.','Развитие добровольчества и благотворительности.']},
+{h:'Культурно-историческое воспитание',i:['Передача из поколения в поколение исторических и культурных традиций и уважение к ним.','Развитие национально-культурного сознания.']},
+{h:'Здоровый образ жизни',i:['Пропаганда физкультуры и здорового образа жизни.','Развитие массового спорта и здорового образа жизни.']},
+{h:'Прочие положения (пп. 9–12)',i:['Государственная политика воспитания реализуется через систему воспитания как неотъемлемую часть образования; она объединяет и координирует всю работу.','Основа: государственные программы воспитания детей и молодёжи, утверждаемые Кабинетом Министров.','Финансовое обеспечение осуществляется в соответствии с законодательством.','Правовая основа: Конституция, настоящий закон, законы «О государственной молодёжной политике», «О физической культуре и спорте», «Об охране здоровья граждан», «О культуре», «О воинской обязанности и военной службе», Семейный кодекс и другие акты.']}
+]},
+{h:'Концепции и положения',note:'Основные действующие документы системы образования (проверка: 14.10.2026). Краткая справка.',g:[
+{h:'Положение о государственных общеобразовательных учреждениях',i:['Утверждено постановлением Президента от 1 марта 2019 г. №1158; регулирует работу школ всех видов.','Общее среднее образование обязательно, каждый вправе получить его в государственных учреждениях бесплатно.','Дисциплина в школе держится на взаимном уважении достоинства учителей и учеников. Физическое насилие и психическое принуждение к ученикам не допускаются.','Ученики вправе бесплатно пользоваться учебниками и учебными пособиями в государственных учреждениях.']},
+{h:'Действующие концепции и программа',i:['Концепция перехода на двенадцатилетнее общее среднее образование в Туркменистане.','Концепция развития цифровой образовательной системы в Туркменистане.','Концепция совершенствования преподавания иностранных языков в Туркменистане.','Концепция совершенствования преподавания естественных и точных наук в Туркменистане.','Концепция совершенствования методики преподавания по общеобразовательным программам в Туркменистане до 2028 года.','Национальная программа «Галкыныш новой эпохи могучего государства: социально-экономическое развитие Туркменистана в 2022–2052 годах».']},
+{h:'Примечание',i:['Концепции и Национальная программа названы основой в методических указаниях Министерства образования к августовским совещаниям 2026–2027 учебного года.','Положение 2019 г. размещено на официальном портале Министерства образования; сведений о его замене не найдено.']}
+]},
+{h:'Актуальность (проверка: 14.10.2026)',warn:1,g:[
+{h:'Вывод',i:['Закон «Об образовании»: принят 4 мая 2013 г.; новая редакция принята 5 июня 2021 г. (12 глав, 60 статей).','В июне 2023 г. изменены только статьи 24 и 35. Статья 31 не менялась.','Методические указания Министерства образования на 2025–2026 учебный год ссылаются на закон в редакции 2021 г.; указания на 2026–2027 тоже ссылаются на закон «Об образовании».','Нового закона, заменяющего этот, я не нашёл.','Сведений о документах, заменяющих Положение 2019 г. и перечисленные выше концепции, не найдено.']}
+],links:[['Положение (портал Министерства образования)','https://nic.bilim.tm/documents/international-argeements/18'],['Методические указания на 2026–2027 уч. год','https://bilim.gov.tm/metbugat/231/bilim-isgarlerinin-20262027-nji-okuw-yylynyn-awgust-maslahatlaryny-we-usuly-amaly-okuwlaryny-gecirmek-boyunca-usuly-maslahatlar/'],['Полный текст закона (на туркменском)','https://turkmenistan.gov.tm/tk/habar/55028/turkmenistanyn-kanuny-bilim-hakynda-rejelenen-gornusi'],['Изменения 2023 г.','https://turkmenistan.gov.tm/tk/habar/73192/turkmenistanyn-kanuny-bilim-hakynda-turkmenistanyn-kanunyna-uytgetmeler-girizmek-hakynda']],foot:'Это краткая справка, не юридическая консультация. В важных случаях пользуйтесь официальным текстом и обращайтесь к директору.'}
+]}};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function render(){
+ var d=T[L];
+ document.documentElement.lang=L;document.title=d.title;
+ document.getElementById('ttl').textContent=d.title;
+ document.getElementById('lb').textContent=L==='tk'?'RU':'TK';
+ document.getElementById('bk').setAttribute('aria-label',d.back);
+ var h='';
+ d.secs.forEach(function(sec){
+  h+='<div class="card'+(sec.warn?' warn':'')+'"><h2>'+esc(sec.h)+'</h2>'+(sec.note?'<div class="mute" style="margin-bottom:6px">'+esc(sec.note)+'</div>':'');
+  sec.g.forEach(function(g,gi){
+   h+='<details'+(sec.warn?' open':'')+'><summary>'+esc(g.h)+'</summary><ul>'+g.i.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></details>';
+  });
+  if(sec.links)h+='<div style="margin-top:8px">'+sec.links.map(function(l){return '<div><a href="'+l[1]+'" target="_blank" rel="noopener">'+esc(l[0])+'</a></div>'}).join('')+'</div>';
+  if(sec.foot)h+='<p class="mute">'+esc(sec.foot)+'</p>';
+  h+='</div>';
+ });
+ document.getElementById('v').innerHTML=h;
+}
+function tl(){L=L==='tk'?'ru':'tk';try{var s=JSON.parse(localStorage.getItem('tkh')||'null');if(s&&s.kids){s.lang=L;localStorage.setItem('tkh',JSON.stringify(s))}}catch(e){}render()}
+render();
+</script>
+</body>
+</html>
